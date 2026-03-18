@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 万物碎碎念研究所（xcWeb）
 
-## Getting Started
+一个使用 Next.js 构建、Nginx 托管的中文文章分享站。
 
-First, run the development server:
+## 技术栈
+
+- Next.js 16（App Router）
+- Tailwind CSS 4
+- Markdown（文章内容）
+- Nginx（静态站点托管）
+
+## 项目结构
+
+- `content/posts/*.md`：文章文件
+- `src/app`：页面路由
+- `src/lib/posts.ts`：文章读取与解析
+- `src/components/post-search.tsx`：搜索和分类筛选
+
+## 本地开发
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 构建静态站点
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+构建后产物在 `out/` 目录。
 
-## Learn More
+## 新增文章
 
-To learn more about Next.js, take a look at the following resources:
+在 `content/posts/` 新建 `xxx.md`，示例：
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```md
+---
+title: "文章标题"
+date: "2026-03-18 11:30"
+category: "分类名"
+summary: "一句话摘要"
+tags:
+  - 标签1
+  - 标签2
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+这里是正文。
+```
 
-## Deploy on Vercel
+然后执行：
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm run build
+sudo systemctl reload nginx
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Nginx 部署
+
+已配置默认站点根目录：`/var/Pro-AI/web/out`
+
+关键配置：
+
+- `try_files $uri $uri/ /index.html;`
+- 静态资源缓存 7 天
+
+配置文件位置：`/etc/nginx/sites-available/default`
+
+## 访问
+
+- 本机：`http://127.0.0.1`
+- 局域网/公网：`http://<服务器IP>`
+
+> 当前是 HTTP（80 端口），后续可扩展 HTTPS。
