@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import type { PostMeta } from "@/lib/posts";
 import EmptyState from "@/components/empty-state";
-import { FeaturedPostCard, GridPostCard } from "@/components/post-card";
+import { GridPostCard } from "@/components/post-card";
 
 interface PostSearchProps {
   posts: PostMeta[];
@@ -29,7 +29,6 @@ export default function PostSearch({ posts }: PostSearchProps) {
     });
   }, [posts, keyword, category]);
 
-  const [featured, ...restPosts] = filtered;
 
   return (
     <section className="space-y-5">
@@ -58,16 +57,11 @@ export default function PostSearch({ posts }: PostSearchProps) {
       {filtered.length === 0 ? (
         <EmptyState text="没搜到内容。你可以换个关键词，或者怪我文章写得还不够多 😅" />
       ) : (
-        <>
-          {featured ? <FeaturedPostCard post={featured} /> : null}
-          {restPosts.length > 0 ? (
-            <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
-              {restPosts.map((post) => (
-                <GridPostCard key={post.slug} post={post} />
-              ))}
-            </div>
-          ) : null}
-        </>
+        <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+          {filtered.map((post) => (
+            <GridPostCard key={post.slug} post={post} />
+          ))}
+        </div>
       )}
     </section>
   );
