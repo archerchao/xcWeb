@@ -1,0 +1,11 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0ea5e9"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#g1)"/>
+  <text x="70" y="320" fill="#fff" font-size="64" font-family="Microsoft YaHei, PingFang SC, sans-serif" font-weight="700">AI / 自动化</text>
+  <text x="70" y="390" fill="#dbeafe" font-size="34" font-family="Microsoft YaHei, PingFang SC, sans-serif">把复杂事情讲明白</text>
+</svg>

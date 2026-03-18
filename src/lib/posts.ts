@@ -10,6 +10,7 @@ export interface PostMeta {
   title: string;
   date: string;
   category: string;
+  cover: string;
   summary: string;
   tags: string[];
 }
@@ -30,6 +31,7 @@ function parseMeta(fileName: string): Post {
     title: String(data.title ?? slug),
     date: String(data.date ?? "1970-01-01 00:00"),
     category: String(data.category ?? "未分类"),
+    cover: String(data.cover ?? "/images/covers/ai-gradient.svg"),
     summary: String(data.summary ?? "暂无摘要"),
     tags: Array.isArray(data.tags) ? data.tags.map((tag: unknown) => String(tag)) : [],
     content,

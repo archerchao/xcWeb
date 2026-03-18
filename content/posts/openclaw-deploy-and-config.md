@@ -2,6 +2,7 @@
 title: "如何部署并配置 OpenClaw（图文实战版）"
 date: "2026-03-18 12:40"
 category: "OpenClaw"
+cover: "/images/openclaw/deploy-flow.svg"
 summary: "从环境检查、安装启动到配置与排错，配图讲清 OpenClaw 的部署流程。"
 tags:
   - OpenClaw

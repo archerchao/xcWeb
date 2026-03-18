@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import type { PostMeta } from "@/lib/posts";
@@ -52,30 +53,41 @@ export default function PostSearch({ posts }: PostSearchProps) {
         </div>
       </div>
 
-      <div className="grid gap-4">
+      <div className="grid gap-5">
         {filtered.length === 0 ? (
           <div className="rounded-2xl border border-dashed border-zinc-300 bg-white p-6 text-zinc-500">
             没搜到内容。你可以换个关键词，或者怪我文章写得还不够多 😅
           </div>
         ) : (
           filtered.map((post) => (
-            <article key={post.slug} className="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm">
-              <div className="mb-2 flex flex-wrap items-center gap-2 text-sm">
-                <span className="rounded-full bg-zinc-100 px-2 py-1 text-zinc-700">{post.category}</span>
-                <span className="text-zinc-500">{post.date}</span>
-              </div>
-              <h2 className="text-xl font-semibold text-zinc-900">
-                <Link href={`/posts/${post.slug}`} className="hover:underline">
-                  {post.title}
-                </Link>
-              </h2>
-              <p className="mt-2 text-zinc-600">{post.summary}</p>
-              <div className="mt-3 flex flex-wrap gap-2 text-xs text-zinc-500">
-                {post.tags.map((tag) => (
-                  <span key={tag} className="rounded-full bg-zinc-100 px-2 py-1">
-                    #{tag}
-                  </span>
-                ))}
+            <article key={post.slug} className="overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm">
+              <Link href={`/posts/${post.slug}`} className="block">
+                <div className="relative h-44 w-full bg-zinc-100 md:h-56">
+                  <Image src={post.cover} alt={post.title} fill className="object-cover" />
+                </div>
+              </Link>
+
+              <div className="p-5">
+                <div className="mb-2 flex flex-wrap items-center gap-2 text-sm">
+                  <span className="rounded-full bg-zinc-100 px-2 py-1 text-zinc-700">{post.category}</span>
+                  <span className="text-zinc-500">{post.date}</span>
+                </div>
+
+                <h2 className="text-xl font-semibold text-zinc-900">
+                  <Link href={`/posts/${post.slug}`} className="hover:underline">
+                    {post.title}
+                  </Link>
+                </h2>
+
+                <p className="mt-2 text-zinc-600">{post.summary}</p>
+
+                <div className="mt-3 flex flex-wrap gap-2 text-xs text-zinc-500">
+                  {post.tags.map((tag) => (
+                    <span key={tag} className="rounded-full bg-zinc-100 px-2 py-1">
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
               </div>
             </article>
           ))

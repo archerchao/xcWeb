@@ -2,6 +2,7 @@
 title: "这 5 个工具，让我每天多出 1 小时"
 date: "2026-03-18 10:44"
 category: "效率"
+cover: "/images/covers/efficiency-gradient.svg"
 summary: "分享我在写作、整理信息、自动化上的工具组合。"
 tags:
   - 效率工具

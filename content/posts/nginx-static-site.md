@@ -2,6 +2,7 @@
 title: "Nginx 部署静态站：像开便利店一样简单"
 date: "2026-03-18 10:42"
 category: "运维"
+cover: "/images/covers/ops-gradient.svg"
 summary: "把前端打包成静态文件后，用 Nginx 托管的最小可行流程。"
 tags:
   - Nginx

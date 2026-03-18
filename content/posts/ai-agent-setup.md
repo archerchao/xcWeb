@@ -2,6 +2,7 @@
 title: "我把 AI 助手训练成了‘不废话同事’"
 date: "2026-03-18 10:40"
 category: "AI"
+cover: "/images/covers/ai-gradient.svg"
 summary: "从提示词到记忆机制，记录一套能长期协作的 AI 助手配置思路。"
 tags:
   - AI 助手

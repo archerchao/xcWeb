@@ -2,6 +2,7 @@
 title: "如何使用 OpenClaw：模式拆解 + 3 个实战案例（图文版）"
 date: "2026-03-18 12:40"
 category: "OpenClaw"
+cover: "/images/openclaw/usage-modes.svg"
 summary: "从日常使用模式到实战案例，图文讲解如何把 OpenClaw 用成个人执行系统。"
 tags:
   - OpenClaw
