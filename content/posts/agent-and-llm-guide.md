@@ -25,6 +25,8 @@ tags:
 
 下面我们从概念到工程，把这条链路讲透。
 
+![Agent 执行闭环示意图](/images/agent/agent-loop.svg)
+
 ---
 
 ## 1. Agent 到底是什么？
@@ -65,6 +67,8 @@ LLM 本质是一个**下一词预测器**，但因为参数规模巨大、训练
 - **长链任务容易漂移**（步骤多了会忘上下文或跑偏）
 
 所以，LLM 适合做“大脑”，但不适合单兵作战。你需要 Agent 框架把它变成“可交付的执行系统”。
+
+![LLM、RAG、Tools 协作关系](/images/agent/llm-rag-tools.svg)
 
 ---
 
@@ -207,6 +211,8 @@ RAG（Retrieval-Augmented Generation）= **检索增强生成**。
 4. **安全合规率**：是否触发越权、泄露、危险操作
 
 在生产环境里，评估体系比模型参数更重要。
+
+![Agent 工程分层图](/images/agent/agent-stack.svg)
 
 ---
 
