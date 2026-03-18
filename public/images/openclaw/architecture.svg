@@ -1,0 +1,47 @@
+<svg width="1200" height="680" viewBox="0 0 1200 680" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font: 700 40px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #111827; }
+      .sub { font: 500 24px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #374151; }
+      .boxTitle { font: 700 24px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #111827; }
+      .boxText { font: 400 20px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #374151; }
+      .arrow { stroke: #4b5563; stroke-width: 4; marker-end: url(#arrowHead); }
+    </style>
+    <marker id="arrowHead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#4b5563" />
+    </marker>
+  </defs>
+
+  <rect width="1200" height="680" fill="#f9fafb"/>
+  <text x="600" y="70" text-anchor="middle" class="title">OpenClaw 部署架构图</text>
+  <text x="600" y="108" text-anchor="middle" class="sub">消息渠道 → Gateway → Agent Runtime → 文件/自动化</text>
+
+  <rect x="80" y="180" rx="20" ry="20" width="240" height="170" fill="#dbeafe" stroke="#60a5fa" stroke-width="3"/>
+  <text x="200" y="235" text-anchor="middle" class="boxTitle">消息渠道</text>
+  <text x="200" y="275" text-anchor="middle" class="boxText">Web / Telegram</text>
+  <text x="200" y="310" text-anchor="middle" class="boxText">Discord / Signal</text>
+
+  <rect x="420" y="150" rx="20" ry="20" width="360" height="230" fill="#dcfce7" stroke="#34d399" stroke-width="3"/>
+  <text x="600" y="210" text-anchor="middle" class="boxTitle">OpenClaw Gateway</text>
+  <text x="600" y="250" text-anchor="middle" class="boxText">路由消息 / 会话编排</text>
+  <text x="600" y="285" text-anchor="middle" class="boxText">工具调用 / 安全约束</text>
+  <text x="600" y="320" text-anchor="middle" class="boxText">定时任务（cron）</text>
+
+  <rect x="880" y="180" rx="20" ry="20" width="240" height="170" fill="#fde68a" stroke="#f59e0b" stroke-width="3"/>
+  <text x="1000" y="235" text-anchor="middle" class="boxTitle">模型/Agent</text>
+  <text x="1000" y="275" text-anchor="middle" class="boxText">推理与生成</text>
+  <text x="1000" y="310" text-anchor="middle" class="boxText">子代理协作</text>
+
+  <rect x="220" y="460" rx="20" ry="20" width="330" height="150" fill="#ede9fe" stroke="#8b5cf6" stroke-width="3"/>
+  <text x="385" y="515" text-anchor="middle" class="boxTitle">Workspace & Memory</text>
+  <text x="385" y="553" text-anchor="middle" class="boxText">项目文件 / 记忆日志</text>
+
+  <rect x="650" y="460" rx="20" ry="20" width="330" height="150" fill="#fee2e2" stroke="#f87171" stroke-width="3"/>
+  <text x="815" y="515" text-anchor="middle" class="boxTitle">系统服务</text>
+  <text x="815" y="553" text-anchor="middle" class="boxText">Nginx / SSH / 定时任务</text>
+
+  <line x1="320" y1="265" x2="420" y2="265" class="arrow"/>
+  <line x1="780" y1="265" x2="880" y2="265" class="arrow"/>
+  <line x1="600" y1="380" x2="385" y2="460" class="arrow"/>
+  <line x1="600" y1="380" x2="815" y2="460" class="arrow"/>
+</svg>
