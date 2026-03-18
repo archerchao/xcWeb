@@ -7,15 +7,21 @@ export default function Home() {
   const posts = getAllPosts();
 
   return (
-    <main className="mx-auto max-w-6xl px-4 py-10 md:px-6">
-      <header className="mb-8 rounded-3xl bg-zinc-900 p-8 text-zinc-50">
+    <main className="mx-auto max-w-7xl px-4 py-10 md:px-6">
+      <header className="mb-8 overflow-hidden rounded-3xl border border-zinc-800 bg-gradient-to-br from-zinc-950 via-zinc-900 to-indigo-950 p-8 text-zinc-50 shadow-xl">
         <p className="mb-3 text-sm uppercase tracking-widest text-zinc-300">{siteConfig.badge}</p>
-        <h1 className="text-3xl font-bold md:text-4xl">{siteConfig.title}</h1>
-        <p className="mt-3 max-w-3xl text-zinc-300">{siteConfig.description}</p>
-        <div className="mt-5">
+        <h1 className="text-3xl font-bold leading-tight md:text-5xl">{siteConfig.title}</h1>
+        <p className="mt-4 max-w-3xl text-zinc-300">{siteConfig.description}</p>
+        <div className="mt-5 flex flex-wrap gap-2 text-xs text-zinc-200">
+          <span className="rounded-full border border-zinc-600 bg-zinc-900/60 px-3 py-1">AI</span>
+          <span className="rounded-full border border-zinc-600 bg-zinc-900/60 px-3 py-1">效率</span>
+          <span className="rounded-full border border-zinc-600 bg-zinc-900/60 px-3 py-1">运维</span>
+          <span className="rounded-full border border-zinc-600 bg-zinc-900/60 px-3 py-1">生活观察</span>
+        </div>
+        <div className="mt-6">
           <Link
             href={siteConfig.aboutPath}
-            className="rounded-full bg-white px-4 py-2 text-sm font-medium text-zinc-900 hover:bg-zinc-200"
+            className="rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-zinc-900 hover:bg-zinc-200"
           >
             关于本站
           </Link>

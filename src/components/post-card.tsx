@@ -9,11 +9,11 @@ interface PostCardProps {
 
 export function FeaturedPostCard({ post }: PostCardProps) {
   return (
-    <article className="overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+    <article className="overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-sm ring-1 ring-indigo-100 transition hover:-translate-y-0.5 hover:shadow-md">
       <div className="grid md:grid-cols-2">
         <Link href={`/posts/${post.slug}`} className="block">
           <div className="relative h-56 w-full bg-zinc-100 md:h-full md:min-h-72">
-            <Image src={post.cover} alt={post.title} fill className="object-cover" />
+            <Image src={post.cover} alt={post.title} fill className="object-cover transition duration-500 hover:scale-105" />
           </div>
         </Link>
 
@@ -47,10 +47,10 @@ export function FeaturedPostCard({ post }: PostCardProps) {
 
 export function GridPostCard({ post }: PostCardProps) {
   return (
-    <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
       <Link href={`/posts/${post.slug}`} className="block">
-        <div className="relative h-40 w-full bg-zinc-100">
-          <Image src={post.cover} alt={post.title} fill className="object-cover" />
+        <div className="relative h-44 w-full bg-zinc-100">
+          <Image src={post.cover} alt={post.title} fill className="object-cover transition duration-500 group-hover:scale-105" />
         </div>
       </Link>
 

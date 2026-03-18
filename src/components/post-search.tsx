@@ -33,7 +33,7 @@ export default function PostSearch({ posts }: PostSearchProps) {
 
   return (
     <section className="space-y-5">
-      <div className="rounded-2xl border border-zinc-200 bg-white p-4 shadow-sm">
+      <div className="rounded-2xl border border-zinc-200/80 bg-white/90 p-4 shadow-sm backdrop-blur">
         <div className="grid gap-3 md:grid-cols-3">
           <input
             value={keyword}
