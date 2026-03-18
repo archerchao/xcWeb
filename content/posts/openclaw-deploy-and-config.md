@@ -17,7 +17,7 @@ tags:
 
 这篇我按“**先看全局，再做细节**”来讲，尽量少走弯路。
 
-![OpenClaw 部署架构图](/images/openclaw/architecture.svg)
+![OpenClaw 部署架构图](/images/openclaw/architecture.svg?v=20260318)
 
 > 上图可以先记一句话：
 > **消息先进 Gateway，Gateway 再调用模型和工具，最后把结果落到会话/文件/系统动作。**
