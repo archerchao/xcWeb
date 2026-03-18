@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
-import { marked } from "marked";
+import { marked, Renderer } from "marked";
 
 const postsDirectory = path.join(process.cwd(), "content/posts");
 
@@ -20,6 +20,24 @@ export interface Post extends PostMeta {
   html: string;
 }
 
+function normalizeAssetPath(src: string): string {
+  if (!src) return src;
+  if (/^(https?:)?\/\//.test(src)) return src;
+  return src.startsWith("/") ? src : `/${src.replace(/^\.\//, "")}`;
+}
+
+function createMarkedRenderer() {
+  const renderer = new Renderer();
+
+  renderer.image = ({ href, text }) => {
+    const src = normalizeAssetPath(String(href ?? ""));
+    const alt = String(text ?? "");
+    return `<img src="${src}" alt="${alt}" loading="lazy" decoding="async" />`;
+  };
+
+  return renderer;
+}
+
 function parseMeta(fileName: string): Post {
   const slug = fileName.replace(/\.md$/, "");
   const fullPath = path.join(postsDirectory, fileName);
@@ -31,11 +49,11 @@ function parseMeta(fileName: string): Post {
     title: String(data.title ?? slug),
     date: String(data.date ?? "1970-01-01 00:00"),
     category: String(data.category ?? "未分类"),
-    cover: String(data.cover ?? "/images/covers/ai-gradient.svg"),
+    cover: normalizeAssetPath(String(data.cover ?? "/images/covers/ai-gradient.svg")),
     summary: String(data.summary ?? "暂无摘要"),
     tags: Array.isArray(data.tags) ? data.tags.map((tag: unknown) => String(tag)) : [],
     content,
-    html: marked.parse(content) as string,
+    html: marked.parse(content, { renderer: createMarkedRenderer() }) as string,
   };
 }
 
