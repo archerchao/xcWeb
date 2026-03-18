@@ -33,12 +33,16 @@ export default async function PostPage({ params }: PostPageProps) {
   if (!post) notFound();
 
   return (
-    <main className="mx-auto max-w-5xl px-4 py-10 md:px-6">
-      <Link href="/" className="text-sm text-zinc-500 hover:text-zinc-900">
-        ← 返回首页
+    <main className="mx-auto max-w-5xl px-4 pb-10 pt-24 md:px-6">
+      <Link
+        href="/"
+        className="fixed left-4 top-5 z-40 inline-flex items-center gap-2 rounded-full border border-zinc-300 bg-white/90 px-4 py-2.5 text-base font-medium text-zinc-800 shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:bg-white hover:shadow md:left-6"
+      >
+        <span aria-hidden>←</span>
+        返回首页
       </Link>
 
-      <article className="mt-4 rounded-3xl border border-zinc-200 bg-white p-6 md:p-10">
+      <article className="mt-2 rounded-3xl border border-zinc-200 bg-white p-6 md:p-10">
         <div className="mb-3 flex flex-wrap items-center gap-2 text-sm">
           <span className="rounded-full bg-zinc-100 px-2 py-1 text-zinc-700">{post.category}</span>
           <span className="text-zinc-500">{post.date}</span>
