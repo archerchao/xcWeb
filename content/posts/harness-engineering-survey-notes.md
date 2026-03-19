@@ -119,3 +119,10 @@ Harness Engineering 不等于“全自动神话”。
 **可执行任务 → 可验证结果 → 可追踪过程 → 可持续迭代。**
 
 把这四件事跑通，比盲目追求“完全自动化”更重要。
+
+## 参考链接
+
+- [Harness Engineering：当人类从写代码转向设计 Agent 的工作环境](https://yage.ai/share/harness-engineering-survey-20260312.html)
+- [OpenAI: Harness engineering: leveraging Codex in an agent-first world](https://openai.com/index/harness-engineering/)
+- [Cursor: Towards self-driving codebases](https://cursor.com/blog/self-driving-codebases)
+- [Cursor: Scaling long-running autonomous coding](https://cursor.com/blog/scaling-agents)
