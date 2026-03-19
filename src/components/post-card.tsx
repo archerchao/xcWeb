@@ -11,7 +11,13 @@ export function GridPostCard({ post }: PostCardProps) {
     <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
       <Link href={`/posts/${post.slug}`} className="block">
         <div className="relative h-44 w-full bg-zinc-100">
-          <Image src={post.cover} alt={post.title} fill className="object-cover transition duration-500 group-hover:scale-105" />
+          <Image
+            src={post.cover}
+            alt={post.title}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
+            className="object-cover transition duration-500 group-hover:scale-105"
+          />
         </div>
       </Link>
 
