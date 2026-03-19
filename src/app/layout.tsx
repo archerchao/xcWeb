@@ -46,7 +46,7 @@ export default function RootLayout({
     <html lang="zh-CN" suppressHydrationWarning>
       <body className={`${geist.variable} antialiased`}>
         <Script id="theme-init" strategy="beforeInteractive">
-          {`(function(){try{var t=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme: dark)').matches;var dark=t?t==='dark':d;document.documentElement.classList.toggle('dark',dark);}catch(e){}})();`}
+          {`(function(){try{var t=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme: dark)').matches;var m=t||'system';var dark=(m==='system')?d:(m==='dark');document.documentElement.classList.toggle('dark',dark);}catch(e){}})();`}
         </Script>
         {children}
         <ThemeToggle />
