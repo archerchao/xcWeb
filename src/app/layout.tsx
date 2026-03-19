@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Geist } from "next/font/google";
 import BackToTop from "@/components/back-to-top";
+import ThemeToggle from "@/components/theme-toggle";
 import "./globals.css";
 
 const geist = Geist({
@@ -41,9 +43,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-CN">
+    <html lang="zh-CN" suppressHydrationWarning>
       <body className={`${geist.variable} antialiased`}>
+        <Script id="theme-init" strategy="beforeInteractive">
+          {`(function(){try{var t=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme: dark)').matches;var dark=t?t==='dark':d;document.documentElement.classList.toggle('dark',dark);}catch(e){}})();`}
+        </Script>
         {children}
+        <ThemeToggle />
         <BackToTop />
       </body>
     </html>
