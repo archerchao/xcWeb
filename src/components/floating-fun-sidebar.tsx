@@ -53,8 +53,17 @@ export default function FloatingFunSidebar({ quote, posts }: FloatingFunSidebarP
       {/* 大屏：常驻悬浮侧栏 */}
       <aside className="fixed right-6 top-1/2 z-40 hidden w-72 -translate-y-1/2 space-y-3 xl:block">{panel}</aside>
 
-      {/* 小屏：缩略按钮 + 抽屉展开 */}
-      <div className="fixed bottom-6 right-6 z-40 xl:hidden">
+      {/* 小屏：与回到顶部合并为同一悬浮操作区 */}
+      <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2 xl:hidden">
+        <button
+          type="button"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="rounded-full bg-zinc-900 px-4 py-2.5 text-sm font-medium text-white shadow-lg transition hover:bg-zinc-700 dark:bg-zinc-700 dark:hover:bg-zinc-600"
+          aria-label="回到顶部"
+        >
+          ↑ 顶部
+        </button>
+
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
