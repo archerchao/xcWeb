@@ -11,6 +11,7 @@ interface FloatingFunSidebarProps {
 
 export default function FloatingFunSidebar({ quote, posts }: FloatingFunSidebarProps) {
   const [picked, setPicked] = useState<PostMeta | null>(null);
+  const [open, setOpen] = useState(false);
 
   const pickRandom = () => {
     if (posts.length === 0) return;
@@ -18,8 +19,8 @@ export default function FloatingFunSidebar({ quote, posts }: FloatingFunSidebarP
     setPicked(posts[index]);
   };
 
-  return (
-    <aside className="fixed right-6 top-1/2 z-40 hidden w-72 -translate-y-1/2 space-y-3 xl:block">
+  const panel = (
+    <>
       <div className="rounded-2xl bg-white/90 p-4 shadow-lg ring-1 ring-zinc-200/80 backdrop-blur dark:bg-zinc-900/90 dark:ring-zinc-700/80">
         <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">✨ 今日金句</h3>
         <p className="mt-2 text-sm leading-6 text-zinc-700 dark:text-zinc-300">“{quote}”</p>
@@ -44,6 +45,36 @@ export default function FloatingFunSidebar({ quote, posts }: FloatingFunSidebarP
           </div>
         ) : null}
       </div>
-    </aside>
+    </>
+  );
+
+  return (
+    <>
+      {/* 大屏：常驻悬浮侧栏 */}
+      <aside className="fixed right-6 top-1/2 z-40 hidden w-72 -translate-y-1/2 space-y-3 xl:block">{panel}</aside>
+
+      {/* 小屏：缩略按钮 + 抽屉展开 */}
+      <div className="fixed bottom-6 right-6 z-40 xl:hidden">
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          className="rounded-full bg-zinc-900 px-4 py-3 text-sm font-medium text-white shadow-lg transition hover:bg-zinc-700 dark:bg-indigo-600 dark:hover:bg-indigo-500"
+          aria-label="打开今日金句与盲盒"
+        >
+          {open ? "收起 ✕" : "金句&盲盒 ✨"}
+        </button>
+      </div>
+
+      {open ? (
+        <div className="fixed inset-0 z-40 bg-black/30 xl:hidden" onClick={() => setOpen(false)}>
+          <aside
+            className="absolute bottom-20 right-4 w-[min(88vw,22rem)] space-y-3"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {panel}
+          </aside>
+        </div>
+      ) : null}
+    </>
   );
 }
