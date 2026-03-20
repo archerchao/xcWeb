@@ -1,10 +1,20 @@
 import Link from "next/link";
 import PostSearch from "@/components/post-search";
+import FloatingFunSidebar from "@/components/floating-fun-sidebar";
 import { getAllPosts } from "@/lib/posts";
 import { siteConfig } from "@/config/site";
 
+function getDailyQuote() {
+  const quotes = siteConfig.dailyQuotes;
+  const now = new Date();
+  const daySeed = Number(`${now.getFullYear()}${now.getMonth() + 1}${now.getDate()}`);
+  const index = daySeed % quotes.length;
+  return quotes[index];
+}
+
 export default function Home() {
   const posts = getAllPosts();
+  const dailyQuote = getDailyQuote();
 
   return (
     <main className="mx-auto max-w-7xl px-4 py-10 md:px-6">
@@ -18,7 +28,7 @@ export default function Home() {
           <span className="rounded-full border border-zinc-600 bg-zinc-900/60 px-3 py-1">运维</span>
           <span className="rounded-full border border-zinc-600 bg-zinc-900/60 px-3 py-1">生活观察</span>
         </div>
-        <div className="mt-6">
+        <div className="mt-6 flex flex-wrap items-center gap-3">
           <Link
             href={siteConfig.aboutPath}
             className="rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-zinc-900 hover:bg-zinc-200"
@@ -29,6 +39,7 @@ export default function Home() {
       </header>
 
       <PostSearch posts={posts} />
+      <FloatingFunSidebar quote={dailyQuote} posts={posts} />
     </main>
   );
 }
